@@ -75,3 +75,75 @@ This project is under the MIT license. See the file [LICENSE](LICENSE.md) for mo
 ---
 
 Build with ♥ by Francisco Vaz :wave: from GoStack Bootcamp of RocketSeat
+
+## Funcionalidades da aplicação
+
+# Recuperação de password
+
+**Requisitos funcionais (quais as funcionalidades)**
+
+- O UTILIZADOR DEVE poder recuperar a sua password informando o seu email;
+- O UTILIZADOR DEVE receber um email com instruções de recuperação de senha;
+- O UTILIZADOR DEVE poder resetar a sua password
+
+**Requisitos Não Funcionais (Não estao diretamente ligadas com as regras de negocio, quais libs, qual bd...)**
+
+- Utilizar MailTrap para testar envios em ambiente de dev
+- Utilizar Amazon SES para envios em produção
+- O envio de emails deve acontecer em segundo plano (background job)
+
+**Regras de negocio (sempre relacionada com o requisito funcional)**
+
+- O link enviado por email para resetar a password, deve expirar em 2h;
+- O utilizador precisa de confirmar a nova password ao resetar a sua password;
+
+# Atualização do perfil
+
+**RF**
+
+- O utilizador deve poder atualizar o seu nome, email e senha;
+
+**RN**
+
+- O utilizador nao pode alterar o seu email para um email já utilizado;
+- Para atualizar a password, o utilizador deve informar a password antiga;
+- Para atualizar a password, o utilizador precisa de confirmar a nova password
+
+# Painel do prestador
+
+**RF**
+
+- O utilizador deve poder listar os seus agendamentos de um dia específico;
+- O prestador deve receber uma notificação sempre que houver um novo agendamento;
+- O prestador deve poder visualizar as notificações não lidas
+
+**RNF**
+
+- Os agendamentos do prestador no dia devem ser armazenados em cache;
+- As notificações do prestador devem ser armazenadas no MongoDB (porque é so texto, schema free(Não ha campos na BD));
+- As notificações do prestador devem ser enviadas em tempo-real utilizando Socket.io;
+
+**RN**
+
+- A notificação deve ter um status de lida, não-lida para que o prestador possa controlar
+
+# Agendamento de serviços
+
+**RF**
+
+- O utilizador deve poder listar todos os prestadores de serviço registados;
+- O utilizador deve poder listar os dias de um mês com pelo menos um horário disponivel de um prestador;
+- o utilizador deve poder listar os horarios; disponiveis num dia especifico de um prestador;
+- o utilizador deve poder realizar um novo agendamento com um prestador;
+
+**RNF**
+
+- A listagem de prestadores deve ser armazenada em cache;
+
+**RN**
+
+- Cada agendamento deve durar 1h exatamente;
+- Os agendamentos devem estar disponiveis entre as 8h às 18h (Primeiro as 8h, último as 17h);
+- O utilizador nao pode agendar um horario ja ocupado;
+- O utilizador nao pode agendar num horário que já passou;
+- o utilizador não pode agendar serviços consigo mesmo;
