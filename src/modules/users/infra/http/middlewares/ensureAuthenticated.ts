@@ -5,7 +5,7 @@ import authConfig from '@config/auth';
 
 import AppError from '@shared/errors/AppError';
 
-interface TokenPayload {
+interface ITokenPayload {
   iat: number;
   exp: number;
   sub: string;
@@ -28,7 +28,7 @@ export default function ensureAuthenticated(
     // fazemos num try catch pois o verify se fer erro retorna um erro e nós queremos tratá-lo À nossa maneira
     const decoded = verify(token, authConfig.jwt.secret);
 
-    const { sub } = decoded as TokenPayload; // atribui-se o type que queremos
+    const { sub } = decoded as ITokenPayload; // atribui-se o type que queremos
 
     request.user = {
       id: sub,
