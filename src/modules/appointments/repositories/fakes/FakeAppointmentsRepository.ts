@@ -55,6 +55,7 @@ class AppointmentsRepository implements IAppointmentsRepository {
 
   public async create({
     provider_id,
+    user_id,
     date,
   }: ICreateAppointmentDTO): Promise<Appointment> {
     const appointment = new Appointment();
@@ -63,7 +64,7 @@ class AppointmentsRepository implements IAppointmentsRepository {
     appointment.date = date;
     appointment.provider_id = provider_id; */
     // usamos o assign no qual adiciona as props ao primeiro elemento que é o array que queremos
-    Object.assign(appointment, { id: uuid(), date, provider_id });
+    Object.assign(appointment, { id: uuid(), date, provider_id, user_id });
 
     this.appointments.push(appointment);
 
