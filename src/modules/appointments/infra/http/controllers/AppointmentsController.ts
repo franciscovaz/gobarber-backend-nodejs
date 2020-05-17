@@ -1,5 +1,4 @@
 import { Request, Response } from 'express';
-import { parseISO } from 'date-fns';
 import { container } from 'tsyringe';
 
 import CreateAppointmentService from '@modules/appointments/services/CreateAppointmentService';
@@ -11,7 +10,7 @@ export default class AppointmentsController {
 
     // Separamos em 2 pois o parseISO é apenas uma transformação
     // No entanto, o startOfHour já é regra de negócio
-    const parsedDate = parseISO(date);
+    // const parsedDate = parseISO(date); // o Joi.date já faz a conversão
     // const appointmentDate = startOfHour(parsedDate);
 
     // em vez de new...
@@ -19,7 +18,7 @@ export default class AppointmentsController {
     const createAppointment = container.resolve(CreateAppointmentService);
 
     const appointment = await createAppointment.execute({
-      date: parsedDate,
+      date,
       provider_id,
       user_id,
     });
