@@ -16,12 +16,12 @@ import '@shared/container';
 
 const app = express();
 
-app.use(rateLimiter);
 app.use(cors());
 
 app.use(express.json());
 // rota para visualizar arquivos do avatar
 app.use('/files', express.static(uploadConfig.uploadsFolder));
+app.use(rateLimiter);
 app.use(routes);
 // tratativa dos erros depois das rotas!!!!
 // middleware para tratativa de erros tem que ter 4 parametros
