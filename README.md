@@ -1,3 +1,7 @@
+<h1 align="center">
+  <img alt="Logo" src="https://res.cloudinary.com/eliasgcf/image/upload/v1588625369/GoBarber/logo_iw1v9f.svg" width="200px">
+</h1>
+
 <h3 align="center">
  NodeJS Backend - GoBarber 2k20 (new version)
 </h3>
@@ -7,7 +11,7 @@
 <p align="center">
   <a href="#rocket-about-the-project">About the project</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#construction_worker-tools">Tools</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#pencil2-functionalities">Functionalities</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#getting-started">Getting Started</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#memo-license">License</a>
 </p>
 
@@ -15,58 +19,89 @@
 
 This is the backend to an app for a fictional beauty service provider, GoBarber.
 
-This project is part of a complete application involving backend, frontend and mobile! (See my other repositories [comming soon])
+This api provides the needs to create/view/list/update appointments between barbers and customers.
+
+Customers can choose the best time available to them.
+
+Providers can see all their appointments, manage the times, etcs.
+
+**GoBarber Web**: [GoBarber Web](https://github.com/franciscovaz/gobarber-web-reactjs)<br />
+**BoBarber Mobile**: Comming soon
 
 ## :construction_worker: Technologies | Tools | Resources
 
 The created app uses [Express](https://expressjs.com/), in addition to needing to configure the following tolls:
 
 - [Node.js](https://nodejs.org/en/)
-- [Express](https://expressjs.com/)
-- [nodemon](https://nodemon.io/)
-<!-- - [Sucrase](https://github.com/alangpierce/sucrase)
-- [Sequelize](http://docs.sequelizejs.com/) -->
-- [ESLint](https://eslint.org/)
-- [Insomnia](https://insomnia.rest/)
-- [PostgreSQL](https://www.postgresql.org/)
-- [node-postgres](https://www.npmjs.com/package/pg)
-<!-- - [Redis](https://redis.io/)
-- [MongoDB](https://www.mongodb.com/)
-- [Mongoose](https://mongoosejs.com/) -->
-- [Docker](https://www.docker.com/docker-community)
-- [JWT](https://jwt.io/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Express](https://expressjs.com/pt-br/)
 - [Multer](https://github.com/expressjs/multer)
-- [Bcrypt](https://www.npmjs.com/package/bcrypt)
-- [Youch](https://www.npmjs.com/package/youch)
-- [Yup](https://www.npmjs.com/package/yup)
-- TDD
-- TypeORM
-<!-- - [Bee Queue](https://www.npmjs.com/package/bcrypt)
-- [Mailtrap](https://mailtrap.io/)
-- [Nodemailer](https://nodemailer.com/about/)
-- [date-fns](https://date-fns.org/)
-- [Sentry](https://sentry.io/)
-- [DotEnv](https://www.npmjs.com/package/dotenv) -->
+- [TypeORM](https://typeorm.io/#/)
+- [JWT-token](https://jwt.io/)
+- [uuid v4](https://github.com/thenativeweb/uuidv4/)
+- [PostgreSQL](https://www.postgresql.org/)
+- [Date-fns](https://date-fns.org/)
+- [Jest](https://jestjs.io/)
+- [Eslint](https://eslint.org/)
+- [Prettier](https://prettier.io/)
+- [EditorConfig](https://editorconfig.org/)
+- [Docker](https://www.docker.com/docker-community)
 
-## :pencil2: Functionalities
+## 💻 Getting started
 
-### **1. On Going**
+### Requirements
 
-<!-- ### **1. User Registration and Authentication**
+- [Node.js](https://nodejs.org/en/)
+- [Yarn](https://classic.yarnpkg.com/) or [npm](https://www.npmjs.com/)
+- One instance of [PostgreSQL](https://www.postgresql.org/) -> Use docker for that 😁
 
-### **2. Upload Files (avatar)**
+**Clone the project**
 
-### **3. Appointments Registration**
+```bash
+$ git clone https://github.com/franciscovaz/gobarber-backend-nodejs.git
+```
 
-### **4. Send Notifications (MongoDB | Redis)**
+**Access project folder**
 
-### **5. Appointement Cancellation and Send Email**
+```bash
+$ cd gobarber-backend-nodejs
+```
 
-### **6. Handler Exceptions**
+**Follow the steps below**
 
-### **7. Environmental Vars**
+```bash
+# Install the dependencies
+$ yarn
 
-### **8. Others** -->
+# Make a copy of '.env.example' to '.env'
+# and set with YOUR environment variables.
+# The aws variables do not need to be filled for dev environment
+$ cp .env.example .env
+
+# Create the instance of postgreSQL using docker
+$ docker run --name gobarber-postgres -e POSTGRES_USER=docker \
+              -e POSTGRES_DB=gobarber -e POSTGRES_PASSWORD=docker \
+              -p 5432:5432 -d postgres
+
+# Create the instance of mongoDB using docker
+$ docker run --name gobarber-mongodb -p 27017:27017 -d -t mongo
+
+# Create the instance of redis using docker
+$ docker run --name gobarber-redis -p 6379:6379 -d -t redis:alpine
+
+# Make a copy of 'ormconfig.example.json' to 'ormconfig.json'
+# and set the values, if they are not filled,
+# to connect with docker database containers
+$ cp ormconfig.example.json ormconfig.json
+
+# Once the services are running, run the migrations
+$ yarn typeorm migration:run
+
+# To finish, run the api service
+$ yarn dev:server
+
+# Project is started!
+```
 
 ## :memo: License
 
@@ -75,75 +110,3 @@ This project is under the MIT license. See the file [LICENSE](LICENSE.md) for mo
 ---
 
 Build with ♥ by Francisco Vaz :wave: from GoStack Bootcamp of RocketSeat
-
-## Funcionalidades da aplicação
-
-# Recuperação de password
-
-**Requisitos funcionais (quais as funcionalidades)**
-
-- O UTILIZADOR DEVE poder recuperar a sua password informando o seu email;
-- O UTILIZADOR DEVE receber um email com instruções de recuperação de senha;
-- O UTILIZADOR DEVE poder resetar a sua password
-
-**Requisitos Não Funcionais (Não estao diretamente ligadas com as regras de negocio, quais libs, qual bd...)**
-
-- Utilizar MailTrap para testar envios em ambiente de dev
-- Utilizar Amazon SES para envios em produção
-- O envio de emails deve acontecer em segundo plano (background job)
-
-**Regras de negocio (sempre relacionada com o requisito funcional)**
-
-- O link enviado por email para resetar a password, deve expirar em 2h;
-- O utilizador precisa de confirmar a nova password ao resetar a sua password;
-
-# Atualização do perfil
-
-**RF**
-
-- O utilizador deve poder atualizar o seu nome, email e senha;
-
-**RN**
-
-- O utilizador nao pode alterar o seu email para um email já utilizado;
-- Para atualizar a password, o utilizador deve informar a password antiga;
-- Para atualizar a password, o utilizador precisa de confirmar a nova password
-
-# Painel do prestador
-
-**RF**
-
-- O utilizador deve poder listar os seus agendamentos de um dia específico;
-- O prestador deve receber uma notificação sempre que houver um novo agendamento;
-- O prestador deve poder visualizar as notificações não lidas
-
-**RNF**
-
-- Os agendamentos do prestador no dia devem ser armazenados em cache;
-- As notificações do prestador devem ser armazenadas no MongoDB (porque é so texto, schema free(Não ha campos na BD));
-- As notificações do prestador devem ser enviadas em tempo-real utilizando Socket.io;
-
-**RN**
-
-- A notificação deve ter um status de lida, não-lida para que o prestador possa controlar
-
-# Agendamento de serviços
-
-**RF**
-
-- O utilizador deve poder listar todos os prestadores de serviço registados;
-- O utilizador deve poder listar os dias de um mês com pelo menos um horário disponivel de um prestador;
-- o utilizador deve poder listar os horarios; disponiveis num dia especifico de um prestador;
-- o utilizador deve poder realizar um novo agendamento com um prestador;
-
-**RNF**
-
-- A listagem de prestadores deve ser armazenada em cache;
-
-**RN**
-
-- Cada agendamento deve durar 1h exatamente;
-- Os agendamentos devem estar disponiveis entre as 8h às 18h (Primeiro as 8h, último as 17h);
-- O utilizador nao pode agendar um horario ja ocupado;
-- O utilizador nao pode agendar num horário que já passou;
-- o utilizador não pode agendar serviços consigo mesmo;
