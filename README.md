@@ -11,7 +11,7 @@
 <p align="center">
   <a href="#rocket-about-the-project">About the project</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#construction_worker-tools">Tools</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#getting-started">Getting Started</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-getting-started">Getting Started</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#memo-license">License</a>
 </p>
 
@@ -25,8 +25,8 @@ Customers can choose the best time available to them.
 
 Providers can see all their appointments, manage the times, etcs.
 
-**GoBarber Web**: [GoBarber Web](https://github.com/franciscovaz/gobarber-web-reactjs)<br />
-**BoBarber Mobile**: Comming soon
+**Repository for web application**: [GoBarber Web](https://github.com/franciscovaz/gobarber-web-reactjs)<br />
+**Repository for mobile application**: Comming soon
 
 ## :construction_worker: Technologies | Tools | Resources
 
